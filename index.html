@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"/>
+  <title>GPM Jobs</title>
+  <meta name="theme-color" content="#003459">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="app.css">
+  <script src="https://alcdn.msauth.net/browser/2.38.2/js/msal-browser.min.js"></script>
+</head>
+<body>
+  <header class="app-bar">
+    <div class="brand">GPM Jobs</div>
+    <div class="auth">
+      <button id="signin"  class="btn primary" onclick="window.signIn && window.signIn()">Sign in</button>
+      <button id="signout" class="btn secondary" style="display:none" onclick="window.signOut && window.signOut()">Sign out</button>
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="controls">
+      <label>Stage
+        <select id="stageFilter">
+          <option value="All">All</option>
+          <option value="Lead">Lead</option>
+          <option value="Quoted">Quoted</option>
+          <option value="Job">Job</option>
+          <option value="Closed">Closed</option>
+        </select>
+      </label>
+      <button id="refresh" class="btn">Refresh</button>
+    </section>
+
+    <section class="cards" id="cards">
+      <div class="hint">Sign in to load jobs from OneDrive Excel…</div>
+    </section>
+
+    <section class="sheet" id="addForm" style="display:none">
+      <h2>Add Job</h2>
+      <form id="jobForm">
+        <label>Job #
+          <input id="number" name="number" inputmode="numeric" placeholder="e.g., 001" required />
+        </label>
+        <label>Name
+          <input id="name" name="name" placeholder="e.g., Johnson Kitchen" required />
+        </label>
+        <label>Status
+          <select id="status" name="status" required>
+            <option>Lead</option>
+            <option>Quoted</option>
+            <option>Job</option>
+            <option>Closed</option>
+          </select>
+        </label>
+        <button type="submit" class="btn primary">Save</button>
+        <div id="formMsg" class="msg" role="status"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <button id="installBtn" class="install">Add to Home Screen</button>
+  </footer>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script defer src="app.js"></script>
+</body>
+</html>
