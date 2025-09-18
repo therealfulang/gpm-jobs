@@ -1,0 +1,9 @@
+{
+  "name": "GPM Jobs",
+  "short_name": "GPM Jobs",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#003459",
+  "theme_color": "#003459",
+  "icons": []
+}
